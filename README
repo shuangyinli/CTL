@@ -1,0 +1,54 @@
+The code (demo) is about the model of CTL, and it is based on multi-thread.
+
+dependences needed:
+GCC 4.6 or more
+libarmadillo-dev
+libboost-dev
+libboost-date-time-dev
+liblapack-dev
+libgsl0-dev
+
+
+Install
+-------------------------------------------------------------
+```
+cd ctl/ && make
+```
+
+
+Usage
+-------------------------------------------------------------
+###Input file format: <br/>
+DocNumLabels label1 label2 ... @ DocNumWords word1 word2 ...<br/>
+DocNumLabels label1 label2 ... @ DocNumWords word1 word2 ...<br/>
+DocNumLabels label1 label2 ... @ DocNumWords word1 word2 ...<br/>
+
+Each row represent one document with labels. DocNumLables means the number labels of document. DocNumWords means the number words of document. Each label is integer and represent one label. Each word is integer and represent one word.<br/>
+<br/>
+demo/train*.txt is a simple demo input file.<br/>
+<br/>
+<br/>
+<br/>
+###Training:<br/>
+```
+./ctl est <input data file> <setting.txt> <num_topics> <model save dir>
+```
+Example: <br/>
+```
+./ctl est demo/train_wiki1000.txt ./ctl/setting.txt 10 demo/model
+```
+Some model training parameters are set in the file "setting.txt", you can change it if you need.
+
+###Inference or Test:<br/>
+```
+./ctl inf <input data file> <setting.txt> <model dir> <prefix> <output dir>
+```
+Example:  <br/>
+```
+./ctl inf demo/test.txt src/setting.txt demo/model/ final demo/output/
+```
+<br/>
+<prefix> is the number of iterations, also it can be 'final'.
+The output files are in demo/output.
+<br/>
+
