@@ -576,10 +576,14 @@ bool delta_legal_size(const double &delta) {
 
 void inference_delta(Document* doc, ctl_model* model, Config* config) {
     int doc_num_labels = doc->num_labels;
-    for (int i = 0; i < doc_num_labels; ++ i) inference_delta_i(doc, model, config, i);
+    for (int i = 0; i < doc_num_labels; ++ i) {
+        //inference_delta_i(doc, model, config, i);
+        inference_delta_i(doc, model, config, doc->labels_ptr[i]); 
+    }
 }
 
 void inference_delta_i(Document* doc, ctl_model* model, Config* config, const int &index) {
+    //printf("%d\n",index);
     double init_delta = util::random() + 1.0;
     double log_delta_i = log(init_delta);
     double df = 0.0, d2f = 0.0;

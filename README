@@ -1,4 +1,9 @@
-The code (demo) is about the model of CTL, and it is based on multi-thread.
+The code (demo) is about the paper of "Correlated Tag Learning in Topic Model", and it is based on multi-thread.
+
+Author: Shuangyin Li
+
+Any question about code please contact us by emails.
+shuangyinli AT cse.ust.hk
 
 dependences needed:
 GCC 4.6 or more
@@ -27,9 +32,9 @@ cd src/ && make
 Usage
 -------------------------------------------------------------
 Input file format:
-DocNumLabels label1 label2 ... @ DocNumWords word1 word2 ...<br/>
-DocNumLabels label1 label2 ... @ DocNumWords word1 word2 ...<br/>
-DocNumLabels label1 label2 ... @ DocNumWords word1 word2 ...<br/>
+DocNumLabels label1 label2 ... @ DocNumWords word1 word2 ... 
+DocNumLabels label1 label2 ... @ DocNumWords word1 word2 ... 
+DocNumLabels label1 label2 ... @ DocNumWords word1 word2 ... 
 
 Each row represent one document with labels. DocNumLables means the number labels of document. DocNumWords means the number words of document. Each label is integer and represent one label. Each word is integer and represent one word.
 

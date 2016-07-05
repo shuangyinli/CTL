@@ -64,7 +64,7 @@ void learn_sigma(ctl_model* model, SS* ss) {
     for (int i = 0; i < num_labels; ++ i) {
         for (int j = 0; j < num_labels; ++ j) {
             sigma[i * num_labels + j] = 1.0 / num_docs  
-                * (ss->sigma[i * num_labels + j] + mu[i] * mu[j] - mu[i] * mu[j] * num_docs - mu[j] * mu[i] * num_docs);
+                * (ss->sigma[i * num_labels + j] + mu[i] * mu[j]* num_docs - ss->mu[i] * mu[j] - ss->mu[j] * mu[i]);
         }
     }
     util::get_matrix_inverse(sigma, model->inv_sigma, num_labels, num_labels);
