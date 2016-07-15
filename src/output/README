@@ -1,0 +1,65 @@
+The code (demo) is about the paper of "Correlated Tag Learning in Topic Model", and it is based on multi-thread.
+
+Author: Shuangyin Li
+
+Any question about code please contact us by emails.
+shuangyinli AT cse.ust.hk
+
+dependences needed:
+GCC 4.6 or more
+libarmadillo-dev
+libboost-dev
+libboost-date-time-dev
+liblapack-dev
+libgsl0-dev
+
+
+Easy way:
+
+cd src/
+
+./example.sh
+
+-------------------------------------------------------------
+
+Install
+-------------------------------------------------------------
+```
+cd src/ && make
+```
+
+
+Usage
+-------------------------------------------------------------
+Input file format:
+DocNumLabels label1 label2 ... @ DocNumWords word1 word2 ... 
+DocNumLabels label1 label2 ... @ DocNumWords word1 word2 ... 
+DocNumLabels label1 label2 ... @ DocNumWords word1 word2 ... 
+
+Each row represent one document with labels. DocNumLables means the number labels of document. DocNumWords means the number words of document. Each label is integer and represent one label. Each word is integer and represent one word.
+
+demo/train*.txt is a simple demo input file.
+
+###Training:
+```
+./ctl est <input data file> <setting.txt> <num_topics> <model save dir>
+```
+Example: 
+```
+./ctl est ./demo/train_wiki1000.txt setting.txt 10 ./output
+```
+Some model training parameters are set in the file "setting.txt", you can change it if you need.
+
+###Inference or Test: 
+```
+./ctl inf <input data file> <setting.txt> <model dir> <prefix> <output dir>
+```
+Example: 
+```
+./ctl inf ./demo/test_wiki1000.txt setting.txt ./output final ./output
+```
+
+<prefix> is the number of iterations, also it can be 'final'.
+The output files are in demo/output.
+
+
